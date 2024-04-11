@@ -2,7 +2,8 @@
     "builds": [
       {
         "src": "insta_clone/wsgi.py",
-        "use": "@vercel/python"
+        "use": "@vercel/python",
+        "config":{"maxLamdaSIze": "15mb","runtime": "python3.9"}
       }
     ],
     "routes": [
