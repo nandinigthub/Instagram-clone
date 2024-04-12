@@ -24,9 +24,5 @@
       "dest": "insta_clone/wsgi.py"
     }
   ]
-}
-{
-  "rewrites": [
-      {"source": "/(.*)", "destination": "/"}
-  ]
+
 }
