@@ -15,8 +15,6 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-# Add .env variables anywhere before SECRET_KEY
 
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
@@ -32,13 +30,14 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'django-insecure-7n*+usk=h7f14yhjzgfxf@ysqxjtdi=m%bg#a4j#mbc45zppsm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,23 +137,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-
-
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
-
-REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(REPOSITORY_ROOT, 'static/')
-
+STATIC_ROOT = 'static'
+STATICFILES_DIRS = [BASE_DIR/'static',]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 
 
 
